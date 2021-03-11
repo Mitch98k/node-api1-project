@@ -1,4 +1,3 @@
-// BUILD YOUR SERVER HERE
 const express = require('express');
 const User = require('./users/model.js');
 
@@ -23,6 +22,8 @@ server.post('/api/users', async (req, res) => {
 });
 
 // get requests
+
+// get all
 server.get('/api/users', async (req, res) => {
     try {
         const users = await User.find();
@@ -31,6 +32,8 @@ server.get('/api/users', async (req, res) => {
         res.status(500).json({ message: "The users information could not be retrieved" })
     }
 });
+
+// get by id
 server.get('/api/users/:id', async (req, res) => {
     const {id} = req.params;
 
@@ -83,4 +86,4 @@ server.delete('/api/users/:id', async (req, res) => {
     }
 });
 
-module.exports = server; // EXPORT YOUR SERVER instead of {}
+module.exports = server;
